@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>File Upload and Image Functions</title>
+        <meta name="author" content="ssubramanian@infoane.com" />
+        <meta name="viewport" content="width=device-width, maximum-scale=8, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="edit.js"></script>
+    </head>
+
+    <body>
+        <cfif structIsEmpty(url) NEQ True>
+            <cfset imgId = url.id>
+        <cfelse>
+            <cfset imgId = 1>
+        </cfif>
+        
+        <cfquery name="img" datasource="ssubramanian">
+            /* SELECT * FROM img WHERE id = "#imgId#" */
+            SELECT * FROM img WHERE imgId = <cfqueryparam value="#imgId#" cfsqltype="cf_sql_integer">
+        </cfquery>
+
+
+<!---         <cfset queryResultColumnNamesArray="#img.getResult().getColumnNames()#" >  
+        <cfset PostFormColumnNamesArray="#listToArray(FORM.FIELDNAMES)#" > --->
+
+        <!-- for checking first three columns values in both form and query (omitting fileupload column)-->
+        <cfset columnNamesArray = ['imgId', 'title', 'description']>
+        <cfif cgi.request_method IS "post">  
+            <cfset newfilepath = "">
+            <cfif FORM.fileupload NEQ "">
+            <cfif FORM.fileupload NEQ img.fileupload>
+                <cfif FORM.title EQ "">
+                    <cfset newfilepath = expandPath('./#FORM.title#.jpg')>
+                    <cfset fileDestination = newfilepath>
+                    <cffile action="upload" fileField="#FORM.fileupload#" destination="#fileDestination#" nameconflict="makeunique">
+                </cfif>
+            </cfif>
+            </cfif>
+            <cfloop index="index" from="1" to="#arrayLen(columnNamesArray)#">
+
+                <!-- Form Field should not be equal to empty -->
+                <cfif FORM[columnNamesArray[index]] NEQ "">
+
+                    <!-- For updation, Respective Form field value should not be equal to Query column value -->
+                    <cfif FORM[columnNamesArray[index]] NEQ img[columnNamesArray[index]][1]>
+                        
+                        <cfquery name="imgUpdate" datasource="ssubramanian">
+                            UPDATE img SET #columnNamesArray[index]# = <cfqueryparam value='#FORM[columnNamesArray[index]]#'> WHERE imgId = <cfqueryparam value='#FORM[columnNamesArray[1]]#'> 
+                        </cfquery>
+
+                    </cfif>
+                    
+                 </cfif>    
+
+
+
+            </cfloop>
+            <cfdump var="#newfilepath#">
+            <!-- finished updation, redirect to table.cfm -->
+            <cflocation url="table.cfm" addToken="false" statusCode="301"> 
+        </cfif>
+            
+
+
+        <!--- <cfloop array="#listToArray(FORM.FIELDNAMES)#" item="item">
+                <cfif FORM[item] NEQ "">
+
+                    <cfoutput>
+                        #item# ##
+                    </cfoutput>
+                    <!---  <cfset fileDestination = #expandPath('./#FORM.TITLE#.jpg')#>
+ --->                    <cffile action="rename" source="#FORM.FILEUPLOAD#" destination="#fileDestination#" >
+
+                </cfif>
+        </cfloop>
+    </cfif> --->
+   
+        
+       
+        <div class="container w-50 mt-2">
+            <form method="post" enctype="multipart/form-data">
+                    <table class="table">
+                        <thead class="table-primary ">
+                            <tr class = "rounded text-center">
+                                <th>
+                                    Field Name
+                                </th>
+                                <th>
+                                    Data
+                                </th>
+                                <th>
+                                    New Data
+                                </th>
+                            </tr>
+                        </thead>
+                        <cfloop query="img">
+                            <cfoutput>
+                                <tr>
+                                    <td>
+                                        <b>id</b>
+                                    </td>
+                                    <td>        
+                                        #img.imgId#
+                                    </td>
+                                    
+                                        <td class = "d-flex justify-content-center align-content-center">
+                                            <input type="text" class="form-control w-50" value="#img.imgId#" name="imgId" id="imgId" readonly="readonly" data-bs-toggle="tooltip" title="Read Only!" />
+                                        </td>
+                                    
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <b>title</b>
+                                    </td>
+                                    <td>
+                                        #img.title#
+                                    </td>
+                                    <td class = "d-flex justify-content-center align-content-center">
+                                        <input type="text" class="form-control w-50" name="title" id="title" />
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <b>description</b>
+                                    </td>
+                                    <td>
+                                        #img.description#
+                                    </td>
+                                    <td class = "d-flex justify-content-center align-content-center">
+                                        <input type="text" class="form-control w-50 "  name="description" id="description" />
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <b>image</b><br/>
+                                        
+                                    </td>    
+                                    <td>
+                                        <cfimage action="read" name="sourceImage" source="#img.fileupload#">
+                                        <cfimage action="resize" name="sourceImage" width="100" height="100" source="#sourceImage#">
+                                        <cfimage action="writeToBrowser" source="#sourceImage#">
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-content-center justify-content-center mt-4 form-group">
+                                            <label class="btn btn-outline-primary form-label" for="fileUpload">File Upload</label>
+                                            <input type="file" class="btn btn-primary mt-3" style="display:none;" id="fileUpload" name="fileUpload" accept=".png, .jpg, .jpeg" /> 
+                                        </div>
+                                    </td>
+                                </tr>
+                            </cfoutput>
+                        </cfloop>
+                    </table>
+                    <div class="d-flex justify-content-between w-100 px-2">
+                        <button id="submitButton" type="submit" class="btn btn-primary">submit</button>
+                        <a  id="cancelButton" class="btn btn-outline-secondary" href = "http://localhost:8500/Siva/tasks/files%20third%20cf%20task/table.cfm">
+                            cancel
+                        </a>
+                    </div>
+            </form>
+         </div> 
+         <cfif cgi.request_method IS "post">  
+
+           <!---  <cfset fileDestination = #expandPath('./#FORM.TITLE#.jpg')#>
+            <cffile action="rename" source="#FORM.FILEUPLOAD#" destination="#fileDestination#" >
+            <cfquery name="img" datasource="ssubramanian">
+            INSERT INTO img VALUES(
+                <cfqueryparam value='#FORM.TITLE#'>, 
+                <cfqueryparam value='#FORM.DESCRIPTION#'>, 
+                <cfqueryparam value='#fileDestination#'>
+                )
+            </cfquery>
+            <cflocation url="table.cfm" addToken="false" statusCode="301">  --->
+       </cfif>       
+    </body>
+
+</html>

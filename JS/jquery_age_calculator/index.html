@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="author" content="ssubramanian@infoane.com" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./assets/index.js"></script>
+    </head>
+
+    <body >
+        <div class="mb-5">
+            <center>
+                <h1>
+                    <b>
+                        Age Calculator
+                    </b>
+                </h1>
+            </center>
+        </div>
+        <div class="container d-flex align-items-center justify-content-center flex-column border border-2 " style="height: 500px; width: 500px;">
+            <div>
+                <label for="date"></label>
+                <input type="date" name="date" />
+                <input type="submit" value="submit" />
+            </div>
+            <div>
+                <pre id="new-date" class="mt-2 fs-4"> </pre>
+                <br />
+                <div id="error-message" class="bg-danger text-white mx-1 mt-2 p-1 rounded-1" style="display: none">
+                    Dates greater than the present date will not be selected!
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
