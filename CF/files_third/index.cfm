@@ -2,7 +2,7 @@
     <cfoutput>here from post</cfoutput>
     <cfset fileDestination = #expandPath('./assets/images/#FORM.TITLE#.jpg')#>
     <cffile action="rename" source="#FORM.FILEUPLOAD#" destination="#fileDestination#" >
-    <cfquery name="img" datasource="ssubramanian">
+    <cfquery name="img" datasource="ssubramanian_dsn">
         INSERT INTO img VALUES(
             <cfqueryparam value='#FORM.TITLE#' cfsqltype="cf_sql_varchar">, 
             <cfqueryparam value='#FORM.DESCRIPTION#' cfsqltype="cf_sql_varchar">, 
@@ -57,11 +57,6 @@
                 </div>
             </form>
         </div>
- <!---       <cfif isdefined(form.title) AND isdefined(form.description) AND isdefined(form.fileupload)>
-            <cfif form.title NEQ "" AND form.DESCRIPTION NEQ "" AND form.FILEUPLOAD NEQ "">
-                <cfdump  var="#form#">
-            </cfif>
-        </cfif> --->
 
         <div class="container w-50 mt-3 d-flex justify-content-end">
             <a href="table.cfm" class="">show table</a>

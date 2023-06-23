@@ -17,7 +17,7 @@
         <cfargument name="username" required="true" type="string">
         <cfargument name="password" required="true" type="string">
 
-        <cfquery name="credTbl" datasource="ssubramanian">
+        <cfquery name="credTbl">
             SELECT * FROM userTable
             WHERE username= <cfqueryparam value="#arguments.username#" cfsqltype="cf_sql_varchar"/>
             AND   password= <cfqueryparam value="#arguments.password#" cfsqltype="cf_sql_varchar"/> 
@@ -29,7 +29,7 @@
     <cffunction name="checkUsername" access="public" returnType="query">
         <cfargument name="username" required="true" type="string"/>
 
-        <cfquery name="credTbl" datasource="ssubramanian">
+        <cfquery name="credTbl">
             SELECT * FROM userTable
             WHERE username= <cfqueryparam value="#arguments.username#" cfsqltype="cf_sql_varchar"/>
         </cfquery>

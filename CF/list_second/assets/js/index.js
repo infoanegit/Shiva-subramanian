@@ -24,6 +24,6 @@ $(()=>{
 	});
 
 	$("#error > button").click(()=>{
-		location.replace("http://localhost:8500/Siva/tasks/list%20second%20cf%20task/index.cfm");
+		location.replace("./index.cfm");
 	})
 });

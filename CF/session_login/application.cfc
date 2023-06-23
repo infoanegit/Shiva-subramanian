@@ -1,7 +1,7 @@
 <cfcomponent>
-    <cfset this.name = "ssgfedsdd" />
+    <cfset this.name = "s001" />
     <cfset this.sessionmanagement = true />
-    <cfset this.dataSource = "ssubramanian" />
+    <cfset this.dataSource = "ssubramanian_dsn" />
     <cfset session.user = "user" />
 
     <cffunction name = "onApplicationStart">
