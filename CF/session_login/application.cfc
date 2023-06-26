@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cfset this.name = "s0012" />
+    <cfset this.name = "s0014" />
     <cfset this.sessionmanagement = true />
     <cfset this.dataSource = "ssubramanian_dsn" />
 
@@ -11,13 +11,18 @@
         <cfif StructKeyExists(URL, "Reinit")>
             <cfset onApplicationStart() />
         </cfif>
-
+    <!---     <cfoutput>
+            #structKeyExists(session,'username')#
+            #listToArray(cgi.SCRIPT_NAME, '/')[-2] EQ 'session_login'#
+            #structKeyExists(session,'username') AND listToArray(cgi.SCRIPT_NAME, '/')[-2] EQ 'session_login'#
+        </cfoutput> --->
+        
         <cfif NOT structKeyExists(session,'username') AND listToArray(cgi.SCRIPT_NAME, '/')[-2] EQ 'welcome'>
-            <cflocation  url = "index.cfm" addtoken="false" />
-                    
+            <cflocation  url = "../" addtoken="false" />
+        
         <!--- after login, users not allowed to do that again but allowed to do signup --->
-        <cfelseif ( structKeyExists(session,'username') AND listToArray(cgi.SCRIPT_NAME, '/')[-2] EQ 'login') > 
-            <cflocation  url = "../welcome/" addtoken="false" />
+        <cfelseif ( structKeyExists(session,'username') AND listToArray(cgi.SCRIPT_NAME, '/')[-2] EQ 'session_login') > 
+            <cflocation  url = "./welcome/" addtoken="false" />
         </cfif>
     </cffunction>
 
