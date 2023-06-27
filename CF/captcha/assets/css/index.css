@@ -1,0 +1,25 @@
+.bg-image{
+    background-image: url('https://img.freepik.com/free-vector/white-abstract-background-design_23-2148825582.jpg');
+    background-size: cover;
+}
+
+body{
+    overflow: hidden;
+}
+
+.card{
+    border-radius: 15px;
+    border-width: 0px;
+    position:relative;
+    animation-name: demo;
+    animation-duration: 0.4s;
+}
+
+@keyframes demo {
+0%{
+    top:150px;
+}
+100%{
+    top:0px;
+}
+}
