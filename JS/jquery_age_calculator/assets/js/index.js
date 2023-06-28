@@ -29,6 +29,7 @@ function addValueWithDetermine(){
     else{
         //...
     }
+    
     //for month
     if((pastDate.month() == presentDate.month()) && (pastDate.year() < presentDate.year())){
         this.month = 11

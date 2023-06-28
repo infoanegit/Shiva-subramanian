@@ -59,12 +59,10 @@ select {
     justify-content: center;
     background-color: #eef0f2;
     font-weight: bold;
-}
-
-.header>label {
     color: #6e706f;
     font-size: xx-large;
 }
+
 
 #formbodyId,
 .formbody {

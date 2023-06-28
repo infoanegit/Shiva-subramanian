@@ -8,7 +8,7 @@
         <cfset done_with_email = "no" />
     </cfif>
 </cfif>
-<cfset session.captchaWord = application.captcha.randomize(5) />
+<cfset session.captchaWord = application.captcha.randomize() />
 
 <!DOCTYPE html>
 <html>
