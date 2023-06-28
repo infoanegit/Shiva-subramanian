@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>form</title>
+		<link rel="stylesheet" href="./assets/css/form.css">
+		<link rel="icon" href="../assignment-logo.jpg" type="image/x-icon" />
+	</head>
+	<body>
+		<div class="outer">
+			<div class="grid-container outer1">
+				<div class="header">
+					<label> Create Account </label>
+				</div>
+				<div id="formbodyId" class="formBody">
+					<form action="#">
+						<div class="grid-container">
+							<div class="flex-containerl2">
+								<label for="fname">First name* </label>
+								<input type="text" id="fname" name="fname" placeholder="enter your first name" />
+							</div>
+							<div class="flex-containerl2">
+								<label for="lname">Last name* </label>
+								<input type="text" id="lname" name="lname" placeholder="enter your last name" /><br />
+							</div>
+						</div>
+
+						<div class="flex-containerl2">
+							<label for="emailid">Email* </label>
+							<input type="text" id="email" name="email" placeholder="enter your email" /><br />
+						</div>
+
+						<div class="grid-container">
+							<div class="flex-containerl2">
+								<label for="password">Password* </label>
+								<input type="text" id="password" name="password" placeholder="enter your password" />
+							</div>
+							<div class="flex-containerl2">
+								<label for="confirm password">Confirm Password* </label>
+								<input type="text" id="confirm password" name="confirm password"
+									placeholder="enter your password" />
+							</div>
+						</div>
+						<br>
+						<div class="grid-container grid-for-part-2">
+							<div class="flex-containerl2">
+								<label for="Gender">Gender </label>
+								<div class="gender">
+									<input type="radio" id="male" name="gender" value="male" />
+									<label for="male">Male</label>
+									<input type="radio" id="female" name="gender" value="female" />
+									<label for="female">Female</label>
+								</div>
+							</div>
+							<div class="flex-containerl2 hobbies">
+								<label for="hobbies-label">Hobbies</label>
+								<div class="flex-containerl1">
+									<input type="checkbox" id="music" name="gender" value="music" />
+									<label for="male">Music</label>
+									<input type="checkbox" id="sports" name="Sports" value="sports" />
+									<label for="female">Sports</label>
+									<input type="checkbox" id="travel" name="Sports" value="travel" />
+									<label for="female">Travel</label>
+									<input type="checkbox" id="movies" name="Sports" value="movies" />
+									<label for="female">Movies</label>
+								</div>
+							</div>
+							<div class="flex-containerl2">
+								<label for="soi">Source Of Income</label>
+								<select name="soi" id="soi">
+									<option value="employed" selected>Employed</option>
+									<option value="unemployed">UnEmployed</option>
+								</select>
+							</div>
+							<div class="flex-containerl2">
+								<div class="slider">
+									<label for="Income">Income</label><br />
+									<input type="range" min="20" max="100" />
+									<label class="output">20k</label>
+								</div>
+							</div>
+							<div class="flex-containerl2 ">
+								<label for="picture">Upload Profile Picture</label>
+								<label class="upload">
+									<input type="file" name="picture" />
+								</label>
+							</div>
+							<div class="flex-containerl2">
+								<label for="Age">Age</label>
+								<input type="text" id="age" name="Age" value="18" />
+							</div>
+
+							<div id="bio-textarea">
+								<div class="flex-containerl2">
+									<label for="bio">Bio</label>
+									<textarea id="bio" name="bio"> </textarea>
+								</div>
+								<div style="height: 5vh;"></div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="footer">
+					<button type="submit" id="create">Create</button>
+					<div style="width:20px"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
