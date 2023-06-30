@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>session login</title>
+		<title>
+            session login
+        </title>
 		<meta name = "author" content = "ssubramanian@infoane.com" />
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1">
 		<link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
@@ -24,29 +26,39 @@
                             </p>      
                             <div class = "form-floating  mb-3">
                                 <input type = "text" id = "userNameId" name = "userName" class = "form-control form-control-lg" placeholder = "Enter User Name"/>
-                                <label for = "userNameId" class="text-dark" style="background-color:none;">User Name</label>
+                                <label for = "userNameId" class="text-dark" style="background-color:none;">
+                                    User Name
+                                </label>
                             </div>
-
                             <div class = "form-floating  mb-3">
                                 <input type = "password" id = "passwordId" name = "password" class = "form-control form-control-lg" placeholder = "Enter Password"/>
-                                <label for = "passwordId" class = "text-dark">Password</label>
+                                <label for = "passwordId" class = "text-dark">
+                                    Password
+                                </label>
                             </div>
-
                             <div class = "form-floating mb-3">
                                 <select class = "form-select form-select-lg" name = "role" id = "roleId" style="font-size:15px;">
-                                    <option value = "user" >User</option>
-                                    <option value = "admin">Admin</option>
-                                    <option value = "editor">Editor</option>
+                                    <option value = "user" >
+                                        User
+                                    </option>
+                                    <option value = "admin">
+                                        Admin
+                                    </option>
+                                    <option value = "editor">
+                                        Editor
+                                    </option>
                                 </select>
-                                <label for = "roleId">Select one option</label>
-                              </div>
-                        
-                            <cfif structKeyExists(form,"loginBtn")>
+                                <label for = "roleId">
+                                    Select one option
+                                </label>
+                            </div>                     
+                            <!--- <cfif structKeyExists(form,"loginBtn")> --->
+                            <cfif cgi.request_method IS "post">  
                                 <cfset checkLogin = application.userObj.getData(username = form.userName, password = form.password, role = form.role)>
                                 <cfif checkLogin.recordcount>
                                     <cfset session.username = checkLogin.username />
                                     <cfset session.role = checkLogin.role />
-                                    <cflocation url = "./welcome/" addToken = "false">
+                                    <cflocation url = "table.cfm" addToken = "false"  statusCode = "301" />
                                 <cfelse>
                                     <div class = "mt-2">
                                         <h5 class = "text-danger" id = "inval">
@@ -54,19 +66,12 @@
                                         </h5>
                                     </div>
                                 </cfif>
-                            </cfif>
-                    
-                            <button name = "loginBtn" class = "btn btn-outline-light btn-lg" type = "submit">Login</button>
+                            </cfif>        
+                            <button name = "loginBtn" class = "btn btn-outline-light btn-lg" type = "submit">
+                                Login
+                            </button>
                         </div>
                     <div>
-                        <!---
-                    <p class = "text-center">
-                        Don't have an account? 
-                        <a href = "./signup/" class = "text-white-50 fw-bold">
-                            Sign Up
-                        </a>
-                    </p>
-                --->
                 </div>
             </div>
         </form>

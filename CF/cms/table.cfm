@@ -13,13 +13,16 @@
     </head>
     <body>
         <div class = "container w-50 mt-5 ">
+            <cfoutput>
+               User Role : #session.role#
+            </cfoutput>
            <table class = "table table-borderless ">
                 <thead class = "table-dark">
                     <th>Page Name</th>
                     <th colspan = "3">Page Description</th>
                     
                 </thead>
-                <tbody>
+                <tbody class = "table-light">
                     <cfset tableData = application.userObj.retrieveData() />
                     <cfloop query = "tableData">
                         <cfoutput>
@@ -27,22 +30,31 @@
                                 <td>#tableData.pageName#</td>
                                 <td>#tableData.pageDesc#</td>
                                 <td>
-                                    <button onclick = "editRow(this, '#tableData.pageName#', '#tableData.pageDesc#')" id = "editButtonId" class = "btn btn-success">Edit</button>
+                                    <button onclick = "editRow(this, '#tableData.pageName#', '#tableData.pageDesc#')" id = "editButtonId" class = "btn btn-success" 
+                                    <cfif session.role NEQ "admin" AND session.role NEQ "editor">
+                                        hidden
+                                    </cfif>
+                                    >Edit</button>
                                 </td>
                                 <td>
-                                    <a class = "btn btn-danger">Delete</a>
+                                    <a class = "btn btn-danger" 
+                                    <cfif session.role NEQ "admin" AND session.role NEQ "editor">
+                                        hidden
+                                    </cfif>
+                                    >Delete</a>
                                 </td>
                             </tr>
                         </cfoutput>
                     </cfloop>
-                    <tr>
-                        <td>
-                            <a onclick = "addRow(this)" class = "btn btn-primary">Add New</a>
-                        </td>
-                    </tr>
+                    <cfif session.role EQ "admin" OR session.role EQ "editor">
+                        <tr>
+                            <td colspan="4">
+                                <a onclick = "addRow(this)" class = "btn btn-primary">Add New</a>
+                            </td>
+                        </tr>
+                    </cfif>
                 </tbody>
            </table>
         </div>
-        <div id = "cfoutput"></div>
     </body>
 </html>

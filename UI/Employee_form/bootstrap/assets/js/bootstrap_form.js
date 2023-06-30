@@ -12,6 +12,7 @@ function createAlertDiv(content, id) {
 }
 
 function firstNameCheck() {
+    console.log("here");
     firstName = document.getElementById("fname");
     firstNameError = createAlertDiv("Please Enter First Name", "fname-error");
     firstNameErrorRef = document.getElementById(firstNameError.id);
@@ -82,8 +83,10 @@ function cpasswordCheck() {
         }
         return false;
     } 
-    else if (cpasswordErrorRef) {
-        cpasswordErrorRef.remove();
+    else{ 
+        if (cpasswordErrorRef) {
+            cpasswordErrorRef.remove();
+        }
         return true;
     }
 }
@@ -150,16 +153,18 @@ function ageCheck(){
     }
 }
 
+
 function check() {
     result = false;
-    result = firstNameCheck();
-    result = lastNameCheck();
-    result = passwordCheck();
-    result = cpasswordCheck();
-    result = emailCheck();
-    result = phnumberCheck();
-    result = ageCheck();
+    result = firstNameCheck() && result;
+    result = lastNameCheck() && result;
+    result = passwordCheck() && result;
+    result = cpasswordCheck() && result;
+    result = emailCheck() && result;
+    result = phnumberCheck() && result;
+    result = ageCheck() && result;
     if(result == true){
         window.location = "./welcome.html";
     }
+    return result;
 }

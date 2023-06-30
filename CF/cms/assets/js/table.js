@@ -1,10 +1,10 @@
 function editRow(elem, pageName, pageDesc){
     upadateDataHTML = `
         <td>
-            <input id = "pageNameId" style = "width: type = "text" value = '${pageName}' />
+            <input id = "pageNameId" style = "width:60%;" type = "text" value = '${pageName}' />
         </td>
         <td>
-            <input id = "pageDescId" type = "text" value = '${pageDesc}' />
+            <input id = "pageDescId" style = "width:60%;" type = "text" value = '${pageDesc}' />
         </td>
         <td class = "text-center" >
             <button onclick = "updateTableRow(this)" id = "editButtonId" class = "btn btn-success">Update</button>

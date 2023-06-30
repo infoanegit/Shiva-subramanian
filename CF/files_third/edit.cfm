@@ -4,18 +4,16 @@
 <cfelse>
     <cfset imgId  =  1>
 </cfif>
-<!--- <cfdump var = "#imgId#" abort /> --->
 <cfset userObj = createObject("component","db") />
 <cfset imgQuery = userObj.getData(imgId) />
-<cfdump var = "#imgQuery#" abort />
 
 <cfif cgi.request_method IS "post">  
     <cfset userObj = createObject("component","db") />
-    <cfset userObj.updateImageData(FORM)>
-    <cfset userObj.updateFormData()>
+    <cfset userObj.updateImageData(FORM, imgQuery)>
+    <cfset userObj.updateFormData(FORM, imgQuery)>
 
     <!-- finished updation, redirect to table.cfm -->
-    <cflocation url = "table.cfm" addToken = "false" statusCode = "301"> 
+    <cflocation url = "table.cfm" addToken = "false" statusCode = "301" /> 
 </cfif>
 
 <!DOCTYPE html>
@@ -48,7 +46,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <cfloop query = userObj.img>
+                    <cfloop query = "imgQuery">
                         <cfoutput>
                             <tr class = "d-none">
                                 <td>
@@ -58,7 +56,7 @@
                                 </td>
                                 
                                 <td class  =  "d-flex justify-content-center align-content-center">
-                                    <input type = "text" class = "form-control w-50" value = "#img.imgId#" name = "imgId" id = "imgId" readonly = "readonly" data-bs-toggle = "tooltip" title = "Read Only!" />
+                                    <input type = "text" class = "form-control w-50" value = "#imgQuery.imgId#" name = "imgId" id = "imgId" readonly = "readonly" data-bs-toggle = "tooltip" title = "Read Only!" />
                                 </td>
                             </tr>
                             <tr>
@@ -68,7 +66,7 @@
                                     </b>
                                 </td>
                                 <td class  =  "d-flex justify-content-center align-content-center">
-                                    <input type = "text" class = "form-control w-50" name = "title" id = "title" data-bs-toggle = "tooltip" title = "255 characters only [letters, numbers and underscore]" value = "#img.title#"/>
+                                    <input type = "text" class = "form-control w-50" name = "title" id = "title" data-bs-toggle = "tooltip" title = "255 characters only [letters, numbers and underscore]" value = "#imgQuery.title#"/>
                                 </td>
                             </tr>
                             <tr>
@@ -78,7 +76,7 @@
                                     </b>
                                 </td>             
                                 <td class  =  "d-flex justify-content-center align-content-center">
-                                    <textarea class = "form-control w-50 "  name = "description" id = "description" data-bs-toggle = "tooltip" title = "255 characters only [letters, numbers and underscore]">#img.description#</textarea>
+                                    <textarea class = "form-control w-50 "  name = "description" id = "description" data-bs-toggle = "tooltip" title = "255 characters only [letters, numbers and underscore]">#imgQuery.description#</textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -87,7 +85,7 @@
                                         image
                                     </b>
                                     <br/>
-                                    <img src = "assets/images/#img.title#.jpg" width = 100 height = 100 />
+                                    <img src = "assets/images/#imgQuery.title#.jpg" width = 100 height = 100 />
                                 </td>    
                                 <td class  =  "d-flex justify-content-center align-content-center">   
                                     <div class = "d-flex align-content-center justify-content-center my-5 form-group">

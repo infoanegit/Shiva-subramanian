@@ -14,10 +14,9 @@
     <cffile action="rename" source = "#FORM.FILEUPLOAD#" destination = "#fileDestination#" />
     <cfmail from = "ssubramanian@infoane.com" to = "#FORM.email#" subject = "BIRTHDAY WISH to #FORM.birthdayBabyName#" server = "smtp.example.com" >
         <cfmailparam file = "#fileDestination#" />
-        #FORM.birthdayWish#
-        <cfimage action = "writeToBrowser" source = "#fileDestination#" width = "50" height = "50 "/>
+        #FORM.birthdayWish# <br />
+        <cfimage action = "writeToBrowser" source = "#fileDestination#" width = "100" height = "100 "/>
     </cfmail> 
-    <cffile action = "delete" file = "#fileDestination#" />
     <cflocation url = "index.cfm?failed=0" addToken = "false" statusCode = "301" />
 </cfif>
 
