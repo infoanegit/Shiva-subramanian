@@ -42,7 +42,7 @@ function addRow(elem){
                 <input id = "pageDescId" type = "text" />
             </td>
             <td class = "text-center" >
-                <button onclick = "addTableRow(this)" id = "editButtonId" class = "btn btn-success">Update</button>
+                <button onclick = "updateTable(this)" id = "editButtonId" class = "btn btn-success">Update</button>
             </td>
             <td>
                 <button onclick = "deleteRow(this)" id = "cancelButtonId" class = "btn btn-danger">Cancel</button>

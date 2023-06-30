@@ -37,7 +37,6 @@
 					
 							<button name = "loginBtn" class = "btn btn-outline-primary btn-lg" type = "submit">Login</button>
 						</div>
-					<div>
 					<p>
 					Don't have an account? <a href = "./signup/" class = "text-white-50 fw-bold">Sign Up</a>
 					</p>
