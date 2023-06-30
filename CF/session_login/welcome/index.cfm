@@ -1,6 +1,6 @@
 <cfif structKeyExists(form,"LogoutBtn")>
   <cfset StructClear(Session) />
-  <cflocation url="/" addToken="false" />
+  <cflocation url="../" addToken="false" />
 </cfif>
 
 <!DOCTYPE html>

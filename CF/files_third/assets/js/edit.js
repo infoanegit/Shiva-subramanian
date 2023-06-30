@@ -19,7 +19,7 @@ $(()=>{
 	$("form").submit(()=>{
 		//required field should not be empty
 	
-		var result = false;
+		var result = true;
 		requiredFields.forEach((e)=>{
             console.log(e.val());
 			// ? any other way
@@ -39,6 +39,7 @@ $(()=>{
                 } 
             }
         });
+		
         return result;
     });
 });

@@ -20,10 +20,10 @@
 								<h2 class = "fw-bold mb-2 text-uppercase">Login</h2>
 								<p class = "text-white-50 mb-5">Please enter your username and password!</p>      
 								<div class = "form-outline form-white mb-3">
-								<input type = "text" id = "userNameId" name = "userName" class = "form-control form-control-lg" placeholder = "Enter User Name"/>
+								<input type = "text" id = "userNameId" name = "userName" class = "form-control form-control-lg" placeholder = "Enter User Name" required = "required" />
 								</div>
 								<div class = "form-outline form-white mb-3">
-								<input type = "password" id = "passwordId" name = "password" class = "form-control form-control-lg" placeholder = "Enter Password"/>
+								<input type = "password" id = "passwordId" name = "password" class = "form-control form-control-lg" placeholder = "Enter Password" required = "required" />
 							</div>
 							
 							<cfif structKeyExists(form,"loginBtn")>

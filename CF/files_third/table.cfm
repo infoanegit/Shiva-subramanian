@@ -53,15 +53,17 @@
                                 #img.description#
                             </td>
                             <td class = "text-wrap">
+                                <!--- <cfdump var = "#expandPath('assets/images/sfcd.jpg')#" abort /> --->
                                 <!--- reszize the image file and write to browser --->
-                                <cfimage action = "read" name = "sourceImage" source = "#img.fileupload#">
-                                <cfimage action = "resize" name = "sourceImage" width = "10" height = "10" source = "#sourceImage#">
-                                <cfimage action = "writeToBrowser" source = "#sourceImage#">
+                                <!--- <cfimage action = "read" name = "sourceImage" source = "assets/images/sfcd.jpg"> --->
+                               <!---  <cfimage action = "resize" name = "sourceImage" width = "10" height = "10" source = "#expandPath('./assets/images/sfcd.jpg')#"> --->
+                                <img src = "assets/images/#img.title#.jpg" width = 10 height = 10 />
+                                <!--- <cfimage action = "writeToBrowser" source = "#sourceImage#"> --->
                                 <i>#img.title#</i>
                             </td>
                             <td>
                                 <!--- redirect to edit data --->
-                                <a href = "edit.cfm?id = #img.imgId#">Edit</a>
+                                <a href = "edit.cfm?id=#img.imgId#">Edit</a>
                             </td>
                             <td>
                                 <!--- redirect to delete data --->
@@ -87,7 +89,7 @@
 
                         <div class = "modal-footer">
                             <cfoutput>
-                                <a id = "anchorDelete" class = "btn btn-danger text-white" href = "delete.cfm?id = #img.imgId#">Delete</a> 
+                                <a id = "anchorDelete" class = "btn btn-danger text-white" href = "delete.cfm?id=#img.imgId#">Delete</a> 
                             </cfoutput>
                         </div>
                     </div>

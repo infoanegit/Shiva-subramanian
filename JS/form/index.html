@@ -16,7 +16,7 @@
         <div class = "container">
             <div id = "bootstrap_nav"></div>
             <div class = "bg-success m-5 p-2 rounded tab-content">
-                <div id = "describe" class = "tab-pane bg-white p-2 m-5 rounded fade">
+                <div id = "describe" class = "tab-pane bg-white p-2 m-5 rounded">
                     <h1 class = "title" >Description</h1>
                     <hr class = " m-3">
                     <p>
@@ -44,9 +44,10 @@
                         updates and/or changes to our website. It is your responsibility to check this page periodically for
                         changes. Your continued use of or access to the website following the posting of any changes
                         constitutes acceptance of those changes.
-
+                    </p>
                         <h2 class = "mt-5">Site Usage Terms</h2>
                         <hr class = " m-3">
+                    <p>
                         By agreeing to these Terms of Service, you represent that you are at least the age of majority in
                         your state or province of residence, or that you are the age of majority in your state or province
                         of residence and you have given us your consent to allow any of your minor dependents to use this
@@ -108,7 +109,7 @@
                             <div class = "col-sm-12 my-2 form-group">
                                 <label for = "emailid">Email* </label><br />
                                 <input type = "text" id = "emailid" class = "form-control" name = "email"
-                                    placeholder = "enter your email" />
+                                    placeholder = "enter your email" autocomplete="no" />
                             </div>
                         </div>
                         <div class = "row my-2">
@@ -125,7 +126,7 @@
                         </div>
                         <div class = "row my-2">
                             <div class = "col-sm-6 form-group">
-                                <label for = "Gender">Gender </label>
+                                Gender
                                 <div class = "gender row ps-3">
                                     <span class = " col male form-check">
                                         <input class = "form-check-input" type = "radio" id = "male" name = "gender" value = "male" />
@@ -139,7 +140,7 @@
                                 </div>
                             </div>
                             <div class = "col-sm-6 form-group my-2">
-                                <label for = "hobbies-label">Hobbies</label>
+                                Hobbies
                                 <div class = "flex-containerl1  row">
                                     <span class = "col">
                                         <input type = "checkbox" class = "form-check-input" id = "music" name = "gender"
@@ -174,22 +175,22 @@
                             </div>
                             <div class = "col-sm-4 form-group">
                                 <div class = "slider">
-                                    <label for = "Income" class = "form-label">Income</label><br />
-                                    <input type = "range" class = "form-range" min = "20" max = "100" />
+                                    <label for = "income" class = "form-label">Income</label><br />
+                                    <input id = "income" type = "range" class = "form-range" min = "20" max = "100" />
                                 </div>
                             </div>
                             <div class = "col-sm-2 text-center d-flex align-items-center justify-content-center">
-                                <label class = "output p-2 btn btn-success">20k</label>
+                                <div class = "output p-2 btn btn-success">20k</div>
                             </div>
                         </div>
                         <div class = "row my-2">
                             <div class = "col-sm-6 form-group my-2">
                                 <label for = "picture" class = "form-label">Upload Profile Picture</label><br />
-                                <input type = "file" class = "form-control" name = "picture" />
+                                <input id = "picture" type = "file" class = "form-control" name = "picture" />
                             </div>
                             <div class = "col-sm-6 form-group my-3 ">
-                                <label for = "Age">Age</label>
-                                <input type = "text" class = "form-control" id = "age" name = "Age" value = "18" />
+                                <label for = "age">Age</label>
+                                <input type = "text" class = "form-control" id = "age" name = "age" value = "18" />
                             </div>
                         </div>
                         <div class = "row my-2">

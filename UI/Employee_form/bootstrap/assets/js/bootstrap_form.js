@@ -22,8 +22,10 @@ function firstNameCheck() {
             }
             return false;
         } 
-    else if (firstNameErrorRef) {
-        firstNameErrorRef.remove();
+    else {
+        if (firstNameErrorRef) {
+            firstNameErrorRef.remove();
+        }
         return true;
     }
 }
@@ -37,10 +39,12 @@ function lastNameCheck() {
             lastName.parentElement.appendChild(lastNameError);
         }
         return false;
-    } else if (lastNameErrorRef) {
-        lastNameErrorRef.remove();
+    } else {
+        if (lastNameErrorRef) {
+            lastNameErrorRef.remove();
+        }
         return true;
-    }
+    }  
 }
 
 function passwordCheck() {
@@ -52,8 +56,10 @@ function passwordCheck() {
             password.parentElement.appendChild(passwordError);
         }
         return false;
-    } else if (passwordErrorRef) {
-        passwordErrorRef.remove();
+    } else {
+        if (passwordErrorRef) {
+            passwordErrorRef.remove();
+        }
         return true;
     }
 }
@@ -65,6 +71,7 @@ function cpasswordCheck() {
     cpasswordErrorRef = document.getElementById(cpasswordError.id);
     if (password.value != cpassword.value) {
         cpassword.style.borderColor = "red";
+        return false;
     } 
     else {
         cpassword.style.borderColor = "";
@@ -93,8 +100,10 @@ function emailCheck() {
         }
         return false;
     } 
-    else if (emailErrorRef) {
-        emailErrorRef.remove();
+    else {
+        if (emailErrorRef) {
+            emailErrorRef.remove();
+        }   
         return true;
     }
 }
@@ -120,6 +129,27 @@ function phnumberCheck() {
     }
 }
 
+function ageCheck(){
+    age = document.getElementById("age");
+    ageError = createAlertDiv(
+        "Please Enter a Valid Age",
+        "age-error"
+    );
+    ageErrorRef = document.getElementById(ageError.id);
+    if (age.value == "" || (age.value <= 1 && age.value >= 200) || isNaN(age.value)) {
+        if (!ageErrorRef) {
+            age.parentElement.appendChild(ageError);
+        }
+        return false;
+    } 
+    else {
+        if (ageErrorRef) {
+            ageErrorRef.remove();
+        }
+        return true;
+    }
+}
+
 function check() {
     result = false;
     result = firstNameCheck();
@@ -128,5 +158,8 @@ function check() {
     result = cpasswordCheck();
     result = emailCheck();
     result = phnumberCheck();
-    return result;
+    result = ageCheck();
+    if(result == true){
+        window.location = "./welcome.html";
+    }
 }

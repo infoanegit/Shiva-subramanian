@@ -6,7 +6,7 @@
         INSERT INTO img VALUES(
             <cfqueryparam value = '#FORM.TITLE#' cfsqltype = "cf_sql_varchar">, 
             <cfqueryparam value = '#FORM.DESCRIPTION#' cfsqltype = "cf_sql_varchar">, 
-            <cfqueryparam value = '#fileDestination#' cfsqltype = "cf_sql_longvarchar">
+            <cfqueryparam value = '#FORM.TITLE#.jpg' cfsqltype = "cf_sql_longvarchar">
             )
     </cfquery>
     <cflocation url = "table.cfm" addToken = "false" statusCode = "301">

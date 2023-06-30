@@ -1,0 +1,1 @@
+<cfset application.userObj.insertData("pageD", "this is pageD") />
