@@ -34,20 +34,17 @@ function showRow(elem, pageName, pageDesc){
 
 function addRow(elem){
     addDataHTML = `
-        <tr/>
-            <td>
-                <input id = "pageNameId" type = "text" />
-            </td>
-            <td>
-                <input id = "pageDescId" type = "text" />
-            </td>
-            <td class = "text-center" >
-                <button onclick = "addTableRow(this)" id = "editButtonId" class = "btn btn-success">Update</button>
-            </td>
-            <td>
-                <button onclick = "deleteRow(this)" id = "cancelButtonId" class = "btn btn-danger">Cancel</button>
-            </td>
+        <tr>
+        <td colspan = '4'>
+            <form method = "post">
+                <input class = "me-4" name = "pageName" id = "pageNameId" type = "text" required />
+                <input class = "me-4" name = "pageDesc" id = "pageDescId" type = "text" required />
+                <button type = "submit" name = "insertDataBtn" id = "editButtonId" class = "btn btn-success me-5" >Insert</button>
+                <button onclick = "deleteRow(this)" id = "cancelButtonId" class = "btn btn-danger me-5">Cancel</button>
+                </td>
+            </form>
         </tr>
+    
     `;
 
     $(elem).parent().parent().before(addDataHTML);

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>
-            session login
+            Log In
         </title>
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1">
 		<link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
@@ -34,30 +34,16 @@
                                 <label for = "passwordId" class = "text-dark">
                                     Password
                                 </label>
-                            </div>
-                            <div class = "form-floating mb-3">
-                                <select class = "form-select form-select-lg" name = "role" id = "roleId" style="font-size:15px;">
-                                    <option value = "user" >
-                                        User
-                                    </option>
-                                    <option value = "admin">
-                                        Admin
-                                    </option>
-                                    <option value = "editor">
-                                        Editor
-                                    </option>
-                                </select>
-                                <label for = "roleId">
-                                    Select one option
-                                </label>
-                            </div>                     
+                            </div>               
                             
                             <!--- <cfif structKeyExists(form,"loginBtn")> --->
                             <cfif cgi.request_method IS "post">  
-                                <cfset checkLogin = application.userObj.getData(username = form.userName, password = form.password, role = form.role)>
+                                <cfset checkLogin = application.userObj.getData(username = form.userName, password = form.password)>
                                 <cfif checkLogin.recordcount>
+                                    
                                     <cfset session.username = checkLogin.username />
                                     <cfset session.role = checkLogin.role />
+        
                                     <cflocation url = "table.cfm" addToken = "false"  statusCode = "301" />
                                 <cfelse>
                                     <div class = "mt-2">
@@ -71,7 +57,13 @@
                                 Login
                             </button>
                         </div>
-                    <div>
+                        <p class = "text-center">
+                            Don't have an account? 
+                            <a href = "./signup.cfm" class = "text-white-50 fw-bold">
+                                Sign Up
+                            </a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </form>
