@@ -21,7 +21,7 @@
             (
                 <cfqueryparam value="#arguments.username#" cfsqltype="cf_sql_varchar"/>,
                 <cfqueryparam value="#arguments.password#" cfsqltype="cf_sql_varchar"/>,
-                "user"
+                'user'
             )
         </cfquery>
     </cffunction>
