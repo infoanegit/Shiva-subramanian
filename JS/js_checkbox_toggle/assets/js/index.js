@@ -8,6 +8,7 @@ function toggleClass(remove, add){
         checkBoxesChildNodes[i].classList.remove(remove);
         checkBoxesChildNodes[i].classList.add(add);
     }
+
     return true;
 }
 
@@ -32,8 +33,10 @@ function btnUnCheckAllClicked(){
 function btnToggleClicked(){
     classA = "btn-primary";
     classB = "btn-outline-primary";
-    Array.from(document.getElementById("chkboxes").children).forEach((child)=>{
-        child.classList.toggle(classA);
-        child.classList.toggle(classB);
-    });
+    Array.from(document.getElementById("chkboxes").children).forEach(
+        (child)=>{
+            child.classList.toggle(classA);
+            child.classList.toggle(classB);
+        }
+    );
 }

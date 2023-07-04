@@ -1,8 +1,9 @@
 function buttonControl(e){
     //getting width value of progress bar in %
-    pBarWidth = document.getElementById("pBar").style.width;
-    pBarWidth = parseInt(pBarWidth.replace("%", ""));
-
+    var pBarWidth = document.getElementById("pBar").style.width;
+    var pBarWidth = parseInt(pBarWidth.replace("%", ""));
+    var additionValue = 0;
+    
     //finding which button got clicked and show error
     if(pBarWidth <= 0 && e.target.id == "minusButton"){
         $("#decrease-error").show();
@@ -42,13 +43,13 @@ $(()=>{
     //setting listener for buttons
     $("#plusButton").click(
         (e)=>{
-         buttonControl(e);
+            buttonControl(e);
         }
     );
 
-   $("#minusButton").click(
+    $("#minusButton").click(
         (e)=>{
-         buttonControl(e);
+            buttonControl(e);
         }
-   );
+    );
 });

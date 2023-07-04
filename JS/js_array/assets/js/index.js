@@ -4,7 +4,6 @@ replaceValueElement = document.getElementById("rValue");
 
 document.getElementById("replaceButtonId").onclick = ()=>{
     const stringArray = stringArrayElement.value.split(",");
-    console.log(stringArray);
     positionValue = positionValueElement.value;
     replaceValue = replaceValueElement.value;
    
@@ -12,12 +11,13 @@ document.getElementById("replaceButtonId").onclick = ()=>{
         return false;
     }
    
+    //showing given array to the user
     document.getElementById('gArrayValue').innerText = stringArray;
     
-    if(positionValue <= stringArray.length){
-        stringArray[positionValue - 1] = replaceValue;
-    }
+    //changing the value at given position
+    stringArray[positionValue - 1] = replaceValue;
     
+    //showing modified array to the user
     document.getElementById("mArrayValue").innerText = stringArray;
 };
 

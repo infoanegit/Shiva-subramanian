@@ -32,7 +32,7 @@
                                     <h2 class="text-uppercase text-center mb-5">Captcha Validation</h2>
                                     <form method="post">
                                         <div class="form-floating">
-                                            <input type="" class="form-control" name="email" id="emailID" placeholder="name@example.com">
+                                            <input class="form-control" name="email" id="emailID" placeholder="name@example.com">
                                             <label for="emailID">Email address</label>
                                         </div>
 
@@ -68,7 +68,10 @@
                                             </div>
                                         </cfif>
                                     </cfif>                                
-                               
+                              <!---  <cfquery name="credTbl" datasource = "ssubramanian_dsn" timeout="0">
+                                SELECT * FROM img
+                            </cfquery> 
+                            <cfdump var = "#credTbl#" />--->
                                 </div>
                             </div>
                         </div>
