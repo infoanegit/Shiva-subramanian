@@ -5,16 +5,15 @@
             Log In
         </title>
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+        <link rel = "icon" href = "../assignment-logo.jpg" type = "image/x-icon" />
 		<link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-		<link rel = "icon" href = "../assignment-logo.jpg" type = "image/x-icon" />
-		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 		<script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 		<link rel = "stylesheet" href = "./assets/css/index.css" />
 	</head>
 	<body>
         <form class = "container" name = "loginForm" method = "post">
             <div class = "row d-flex justify-content-center align-items-center " >
-                <div class = "col-12 col-md-8 col-lg-6 col-xl-5 mt-3">
+                <div class = "col-6 mt-3">
                     <div class = "card bg-dark text-white shadow" style = "border-radius: 1rem;">
                         <div class = "card-body p-5 text-center">
                             <h2 class = "fw-bold mb-2 text-uppercase">
@@ -36,14 +35,11 @@
                                 </label>
                             </div>               
                             
-                            <!--- <cfif structKeyExists(form,"loginBtn")> --->
                             <cfif cgi.request_method IS "post">  
                                 <cfset checkLogin = application.userObj.getData(username = form.userName, password = form.password)>
                                 <cfif checkLogin.recordcount>
-                                    
                                     <cfset session.username = checkLogin.username />
                                     <cfset session.role = checkLogin.role />
-        
                                     <cflocation url = "table.cfm" addToken = "false"  statusCode = "301" />
                                 <cfelse>
                                     <div class = "mt-2">
@@ -53,6 +49,7 @@
                                     </div>
                                 </cfif>
                             </cfif>        
+                         
                             <button name = "loginBtn" class = "btn btn-outline-light btn-lg" type = "submit">
                                 Login
                             </button>

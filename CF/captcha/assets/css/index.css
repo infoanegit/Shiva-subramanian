@@ -1,10 +1,7 @@
-.bg-image{
-    background-image: url('https://img.freepik.com/free-vector/white-abstract-background-design_23-2148825582.jpg');
-    background-size: cover;
-}
-
 body{
     overflow: hidden;
+    background-image: url('https://img.freepik.com/free-vector/white-abstract-background-design_23-2148825582.jpg');
+    background-size: cover;
 }
 
 .card{
@@ -16,10 +13,10 @@ body{
 }
 
 @keyframes demo {
-0%{
-    top:150px;
-}
-100%{
-    top:0px;
-}
+    0%{
+        top:150px;
+    }
+    100%{
+        top:0px;
+    }
 }

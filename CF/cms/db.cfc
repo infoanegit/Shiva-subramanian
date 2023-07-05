@@ -1,4 +1,5 @@
 <cfcomponent>
+    <!--- insert page data --->
     <cffunction name="insertData" access="public" returnType="void">
         <cfargument name="pageName" required="true" type="string"/>
         <cfargument name="pageDesc" required="true" type="string"/>  
@@ -12,6 +13,7 @@
         </cfquery>
     </cffunction>
 
+    <!--- insert new user data / create new user --->
     <cffunction name="insertUser" access="public" returnType="void">
         <cfargument name="username" required="true" type="string"/>
         <cfargument name="password" required="true" type="string"/>  
@@ -26,6 +28,7 @@
         </cfquery>
     </cffunction>
 
+    <!--- get the user data for given username and password --->
     <cffunction name="getData" access="public" returnType="query">
         <cfargument name="username" required="true" type="string">
         <cfargument name="password" required="true" type="string">
@@ -39,6 +42,7 @@
         <cfreturn credTbl />
     </cffunction>
 
+    <!--- get the user data for given username --->
     <cffunction name="checkUsername" access="public" returnType="query">
         <cfargument name="username" required="true" type="string"/>
 
@@ -50,6 +54,7 @@
         <cfreturn credTbl />
     </cffunction>
 
+    <!--- get all page data --->
     <cffunction name="retrieveData" access="public" returnType="query">
 
         <cfquery name="credTbl">
@@ -59,6 +64,7 @@
         <cfreturn credTbl />
     </cffunction>
 
+    <!--- update page data for a given pageId --->
     <cffunction name="updateData" access="public" returnType="void">
         <cfargument name="pageid" required="yes" type="numeric"/>
         <cfargument name="pagename" required="yes" type="string"/>
@@ -71,6 +77,7 @@
         </cfquery>  
     </cffunction>
 
+    <!--- delete page data for a given pageId --->
     <cffunction name="deleteData" access="public" returnType="void">
         <cfargument name="pageid" required="yes" type="numeric"/>
         <cfquery name = "rset">

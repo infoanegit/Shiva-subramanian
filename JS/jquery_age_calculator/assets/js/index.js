@@ -1,4 +1,4 @@
-function calculateAge(currentDate, dob) {
+function getAge(currentDate, dob) {
     var age = {};
     var yearDiff = currentDate.getFullYear() - dob.getFullYear();
     var monthDiff = currentDate.getMonth() - dob.getMonth();
@@ -29,7 +29,7 @@ $(()=>{
     $("form").submit(()=>{
         var currentDate = new Date();
         var dob = new Date($("input[type=date]").val());
-        var age = calculateAge(currentDate, dob);
+        var age = getAge(currentDate, dob);
         $("#error-message").hide();
 
         //validation      
