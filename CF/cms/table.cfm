@@ -1,19 +1,33 @@
 <cfif structKeyExists(URL, "id")>
+
+    <!--- deleting page data with id --->
     <cfset application.userObj.deleteData(URL.id) />
-    <cflocation url = "./table.cfm" addtoken="false" statusCode="301" />
+
+    <!--- reloading the current page( table.cfm ) --->
+    <cflocation url = "./table.cfm" addtoken="false" />
 </cfif>
 <cfif cgi.request_method IS "post">  
+
+    <!--- onClick logOutBtn, clear session --->
     <cfif structKeyExists(FORM, "logOutBtn")>
         <cfset structClear(session) />
-        <cflocation url = "./" addtoken="false" statusCode="301" />
+
+        <!--- redirect to login page --->
+        <cflocation url = "./" addtoken="false" />
+
+    <!--- onClick submitBtn, update existing page data with FORM.pageId --->    
     <cfelseif structKeyExists(FORM, "submitBtn")>
         <cfset application.userObj.updateData(FORM.pageId, FORM.pageName, FORM.pageDesc) />
-        <cflocation url = "./table.cfm" addtoken="false" statusCode="301" />
+        <cflocation url = "./table.cfm" addtoken="false" />
+
+    <!--- onClick signUpBtn, redirect to signup.cfm --->
     <cfelseif structKeyExists(FORM, "signUpBtn")>
-        <cflocation url = "./signup.cfm" addtoken="false" statusCode="301" />
+        <cflocation url = "./signup.cfm" addtoken="false" />
+
+    <!--- onClick insertDataBtn, new page data will be inserted into the DB --->
     <cfelseif structKeyExists(FORM, "insertDataBtn")>
         <cfset application.userObj.insertData(FORM.pageName, FORM.pageDesc) />
-        <cflocation url = "./table.cfm" addtoken="false" statusCode="301" />
+        <cflocation url = "./table.cfm" addtoken="false" />
     </cfif>
 </cfif>
 
@@ -25,7 +39,6 @@
         </title>
  		<meta name = "viewport" content = "width = device-width, initial-scale = 1" />
 		<link rel = "icon" href = "../assignment-logo.jpg" type = "image/x-icon" />
-        <link rel = "stylesheet" href = "./assets/css/index.css" />
         <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
 		<script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </head>
@@ -51,6 +64,8 @@
                     </th>   
                 </thead>
                 <tbody class = "table-light">
+
+                    <!--- retrieve all page data --->
                     <cfset tableData = application.userObj.retrieveData() />
                     <cfloop query = "tableData">
                         <cfoutput>
@@ -62,6 +77,8 @@
                                     #tableData.pageDesc#
                                 </td>
                                 <td>
+
+                                    <!--- The edit feature is only available for editors and admin --->
                                     <cfif session.role EQ "editor" OR session.role EQ "admin">
                                         <button name = "edit" id = "editButtonId" class = "btn btn-success" data-bs-toggle="modal" data-bs-target="##myModal" >
                                             Edit
@@ -105,6 +122,8 @@
                                     </cfif>
                                 </td>
                                 <td>
+
+                                    <!--- The delete feature is only available for admin --->
                                     <cfif session.role EQ "admin">
                                         <a href = "./table.cfm?id=#tableData.pageId#" name = "delete" class = "btn btn-danger" >
                                             Delete
@@ -114,6 +133,8 @@
                             </tr>
                         </cfoutput>
                     </cfloop>
+
+                    <!--- The insert feature is only available for only admin and editor --->
                     <cfif session.role EQ "admin" OR session.role EQ "editor">
                         <tr>
                             <form method = "post" >

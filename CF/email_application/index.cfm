@@ -1,23 +1,27 @@
+<!--- if not failed / email sent successfully, then a success message will be printed on the top of the UI --->
 <cfif structKeyExists(URL,"failed") >
     <cfif URL.failed EQ 0>
         <div style = "width:35%" class = "sticky-top mx-auto alert alert-success alert-dismissible">
-            
-            <!--- onclick button redirect it to current page with url query removed --->
             <button onclick = window.location="./" type = "button" class = "btn-close" data-bs-dismiss = "alert"></button>
-            <strong>Success!</strong> Email has been Delivered.
+            <strong>
+                Success!
+            </strong> 
+            Email has been Delivered.
         </div>
     </cfif>
 </cfif>
 
 <cfif cgi.REQUEST_METHOD EQ "post">
-    <cfset fileDestination = #expandPath('#FORM.birthdayBabyName#.jpg')# />
+    
+    <!--- store the file in local folder --->
+    <cfset fileDestination = #expandPath('./img/#FORM.birthdayBabyName#.jpg')# />
     <cffile action="rename" source = "#FORM.FILEUPLOAD#" destination = "#fileDestination#" />
     <cfmail from = "ssubramanian@infoane.com" to = "#FORM.email#" subject = "BIRTHDAY WISH to #FORM.birthdayBabyName#" server = "smtp.example.com" >
         <cfmailparam file = "#fileDestination#" />
         #FORM.birthdayWish# <br />
         <cfimage action = "writeToBrowser" source = "#fileDestination#" width = "100" height = "100 "/>
     </cfmail> 
-    <cflocation url = "index.cfm?failed=0" addToken = "false" statusCode = "301" />
+    <cflocation url = "index.cfm?failed=0" addToken = "false" />
 </cfif>
 
 <!DOCTYPE html>
@@ -28,7 +32,6 @@
         <meta name = "viewport" content = "width = device-width, initial-scale = 1" />
         <link rel="icon" href="../assignment-logo.jpg" type="image/x-icon" />
         <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
         <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </head>
 

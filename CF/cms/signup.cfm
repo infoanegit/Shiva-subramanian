@@ -7,8 +7,7 @@
         <meta name = "viewport" content = "width = device-width, initial-scale = 1" />
         <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
         <link rel="icon" href="../assignment-logo.jpg" type="image/x-icon" />
-        <link rel = "stylesheet" href = "../assets/css/index.css" />
-        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <link rel = "stylesheet" href = "./assets/css/index.css" />
         <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </head>
 
@@ -38,9 +37,20 @@
                             </div> 
                             
                             <cfif cgi.request_method IS "post">  
+
+                                <!--- get all users with form.username --->
                                 <cfset checkuser = application.userObj.checkUsername(username = form.userName) />
-                                <cfif checkuser.recordcount == 0>
+
+                                <!--- 
+                                    If username exist, then redirect to index.cfm( login ) page
+                                    Else an error message will be shown to the user
+                                ---> 
+                                <cfif checkuser.recordcount>
+
+                                    <!--- insert username and password in DB --->
                                     <cfset application.userObj.insertUser(username = form.userName, password = form.password) />
+
+                                    <!--- redirect to login page --->
                                     <cflocation  url = "./" addToken = "false" />
                                 <cfelse>
                                     <div class = "text-danger mx-auto mb-2">
@@ -49,9 +59,6 @@
                                 </cfif>
                             </cfif>
 
-                            <!---<div class = "form-outline form-white mb-3">
-                            <input type = "password" id = "typePasswordX" class = "form-control form-control-lg" placeholder = "Enter Mobile Number" required = "required"/>
-                            </div>--->
                             <button class = "btn btn-outline-light btn-lg" type = "submit" name = "signupBtn">
                                 Sign Up
                             </button>
