@@ -1,4 +1,5 @@
 <cfcomponent>
+    <!--- insert new username and password --->
     <cffunction name="insertData" access="public" returnType="void">
         <cfargument name="username" required="true" type="string"/>
         <cfargument name="password" required="true" type="string"/>
@@ -13,6 +14,7 @@
         </cfquery>
     </cffunction>
 
+    <!--- get user data with particular username and password --->
     <cffunction name="getData" access="public" returnType="query">
         <cfargument name="username" required="true" type="string">
         <cfargument name="password" required="true" type="string">
@@ -26,6 +28,7 @@
         <cfreturn credTbl />
     </cffunction>
 
+    <!--- get user data with particular username --->
     <cffunction name="checkUsername" access="public" returnType="query">
         <cfargument name="username" required="true" type="string"/>
 
