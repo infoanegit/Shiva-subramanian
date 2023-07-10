@@ -11,28 +11,31 @@
 
     <cfhttp result="result" method="post" charset="utf-8" url = "https://api.openai.com/v1/chat/completions" >
         <cfhttpparam type = "header" name = "Content-Type" value = "application/json" />
-        <cfhttpparam type = "header" name = "Authorization" value = "Bearer 
-        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" />
+        <cfhttpparam type = "header" name = "Authorization" value = "Bearer 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" />
         <cfhttpparam type = "body" value = "#serializeJSON(bodyStruct)#" />
     </cfhttp>   
 
     <cfset resultStruct = deserializeJSON(result.fileContent) />
-    <cfset botReply = resultStruct.choices[1].message.content />
+    <cfif structKeyExists(resultStruct, "error")>
+        <cfset botReply = "Error Occured!" />
+    <cfelse>
+        <cfif structKeyExists(result, "ResponseHeader") >
+            <cfif result.ResponseHeader.Status_Code == "200" >
+                <cfset botReply = resultStruct.choices[1].message.content />
+            </cfif>
+        </cfif>
+    </cfif>
 </cfif>
 
 <div class = "bg-light" >
     <div class = "d-flex flex-row " style = "margin-left:25%">
         <div class = "text-light">
-            <p class = "bg-danger text-center px-4" style = "width:90px;">
+            <div class = "bg-danger text-center" style = "width:120px;">
                 BOT
-            </p>
+           </div>
         </div>
-        <div class = "p-2 mb-5" style = "widht:80%" >
-            <cfif result.ResponseHeader.Status_Code == "200" >
-                <pre class="text-wrap" ><cfoutput>#botReply#</cfoutput></pre>
-            <cfelse>
-                <pre class="text-wrap text-danger" >something went wrong!</pre>
-            </cfif>
+        <div class = "p-2 mb-5" style = "widht:80%" >            
+            <pre class="text-wrap" ><cfoutput>#botReply#</cfoutput></pre>
         </div>
     </div>
 </div>

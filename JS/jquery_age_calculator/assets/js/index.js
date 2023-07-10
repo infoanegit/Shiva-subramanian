@@ -31,7 +31,7 @@ $(()=>{
         var dob = new Date($("input[type=date]").val());
         var age = getAge(currentDate, dob);
         $("#error-message").hide();
-
+        
         //validation      
         if(dob > currentDate){
             $("#new-date").text("");

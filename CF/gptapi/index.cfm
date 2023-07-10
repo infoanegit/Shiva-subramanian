@@ -11,18 +11,16 @@
         <script src = "./assets/js/index.js" ></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </head>
-
     <body>
-        <form class = "container-fluid">
+       <form class = "container-fluid">
             <div id = "content" class = "mb-4">
             </div>
-            <div class="spinner-border mt-5" style="margin-left:25%; display:none;"></div>
-        </div>
+            <div class="spinner-border mb-5" style="margin-left:25%; display:none;"></div>
             <div class = "d-flex justify-content-center fixed-bottom mb-1">
                 <input id = "userQueryId" type = "text" class = "form-control-lg w-50 bg-light" name = "userQuery" />
                 <button type = "submit" class = "btn btn-primary mx-2">
                     <span class="material-symbols-outlined">
-                    send
+                        send
                     </span>
                 </button>
             </div>

@@ -8,6 +8,7 @@
     </cffunction>
 
     <cffunction name = "onRequestStart">
+        
         <!--- If the user is already logged in, then redirect from the login page to the table page --->
         <cfif structKeyExists(session,'username') AND listToArray(cgi.SCRIPT_NAME, '/')[-1] EQ 'index.cfm'>
             <cflocation  url = "./table.cfm" addtoken="false" />

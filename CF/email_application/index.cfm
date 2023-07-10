@@ -20,7 +20,7 @@
         <cfmailparam file = "#fileDestination#" />
         #FORM.birthdayWish# <br />
         <cfimage action = "writeToBrowser" source = "#fileDestination#" width = "100" height = "100 "/>
-    </cfmail> 
+    </cfmail>
     <cflocation url = "index.cfm?failed=0" addToken = "false" />
 </cfif>
 

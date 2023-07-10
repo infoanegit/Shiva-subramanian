@@ -27,7 +27,6 @@ ${$("#userQueryId").val()}
                     {userQuery:$("#userQueryId").val()},
                     
                     function (data) {
-                        console.log(data);
                         $("#content").append(data);
                         $(".spinner-border").hide();
                     },
