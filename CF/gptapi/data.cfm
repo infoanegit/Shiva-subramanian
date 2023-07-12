@@ -1,3 +1,4 @@
+<cfprocessingdirective pageEncoding="utf-8">
 <cfset botReply = "null" />
 <cfif cgi.REQUEST_METHOD == "post">
     <cfset arr = arrayNew(1) />
@@ -30,8 +31,8 @@
 <div class = "bg-light" >
     <div class = "d-flex flex-row " style = "margin-left:25%">
         <div class = "text-light">
-            <div class = "bg-danger text-center" style = "width:120px;">
-                BOT
+            <div class = "bg-danger text-center" style = "width:90px;">
+                <span class = "fs-5 text-start" style="padding-left:0px;">🤖</span> BOT 
            </div>
         </div>
         <div class = "p-2 mb-5" style = "widht:80%" >            

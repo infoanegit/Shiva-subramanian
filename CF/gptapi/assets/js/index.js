@@ -7,7 +7,7 @@ $(
                 <div class = "d-flex flex-row" style = "margin-left:25%" >
                     <div class = "text-light">
                         <p class = "bg-danger text-center" style = "width:90px;">
-                            USER
+                        <span class = "fs-5">👤</span>  USER
                         </p>
                     </div>
                     <div class = "p-2">
