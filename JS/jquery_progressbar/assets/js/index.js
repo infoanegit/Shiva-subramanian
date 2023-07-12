@@ -34,7 +34,8 @@ function buttonControl(e){
         
 $(()=>{
     //setting progress bar to 0%
-    $("#pBar").css("width", "0%");
+    $(".progress-bar").css("width", "0%");
+    console.log($(".progress-bar")[0]);
 
     //hide errors
     $("#increase-error").hide();
