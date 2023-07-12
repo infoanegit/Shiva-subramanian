@@ -146,8 +146,8 @@
                                         <input class = "me-4" name = "pageDesc" id = "pageDescId" type = "text" required />
                                     </td>
                                     <td colspan="4">
-                                        <button type = "submit" name = "insertDataBtn" id = "editButtonId" class = " w-100 btn btn-info me-5" >
-                                            <b>Insert</b>
+                                        <button type = "submit" name = "insertDataBtn" id = "editButtonId" class = "fw-medium w-100 btn btn-secondary me-5" style = "letter-spacing: 0.5px;" >
+                                            Insert
                                         </button>
                                     </td>
                                 </tr>

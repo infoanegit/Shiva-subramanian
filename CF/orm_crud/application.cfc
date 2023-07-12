@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cfset this.name = "s28sh" />
+    <cfset this.name = "s44" />
     <cfset this.sessionmanagement = true />
     <cfset this.dataSource = "ssubramanian_dsn" />
     <cfset this.ormEnabled = "true" />

@@ -3,7 +3,7 @@
     <cffunction name="insertData" access="public" returnType="void">
         <cfargument name="pageName" required="true" type="string"/>
         <cfargument name="pageDesc" required="true" type="string"/>  
-        <cfset newPage = EntityNew("page") />
+        <cfset newPage = entityNew("page") />
         <cfset newPage.setPageName(pageName) />
         <cfset newPage.setPageDesc(pageDesc) />
         <cfset entitySave(newPage) />
@@ -13,7 +13,7 @@
     <cffunction name="insertUser" access="public" returnType="void">
         <cfargument name="username" required="true" type="string"/>
         <cfargument name="password" required="true" type="string"/>  
-        <cfset user = EntityNew("user") />
+        <cfset user = entityNew("user") />
         <cfset user.setUserName(username) />
         <cfset user.setPassword(password) />
         <cfset user.setRole("user") />
