@@ -45,7 +45,7 @@
                                     If username exist, then redirect to index.cfm( login ) page
                                     Else an error message will be shown to the user
                                 ---> 
-                                <cfif checkuser.recordcount>
+                                <cfif checkuser.recordcount EQ 0>
 
                                     <!--- insert username and password in DB --->
                                     <cfset application.userObj.insertUser(username = form.userName, password = form.password) />

@@ -16,7 +16,7 @@
         <cfset user = entityNew("user") />
         <cfset user.setUserName(username) />
         <cfset user.setPassword(password) />
-        <cfset user.setRole("user") />
+        <!--- <cfset user.setRole("user") /> --->
         <cfset entitySave(user) />
     </cffunction>
 
@@ -24,19 +24,32 @@
     <cffunction name = "getData" access = "public" returnType = "query">
         <cfargument name = "username" required = "true" type = "string">
         <cfargument name = "password" required = "true" type = "string">
-        <cfset userEntity = entityLoadByPK("user", username) />
-        <cfset userQuery = entityToQuery(userEntity) />
-        <cfif userQuery.password EQ password >
-            <cfreturn userQuery />
+        <cfset userEntity = entityLoad("user", {userName = username, password = arguments.password}) />
+        <!--- <cfdump var = "#userEntity#" abort/> --->
+        <cfif arrayIsEmpty(userEntity) EQ "yes">
+            <cfreturn queryNew("") /> 
         </cfif>
-        <cfreturn query() />
+
+        <cfset userQuery = entityToQuery(userEntity[1]) />
+        <cfif compare(userQuery.password, password) NEQ 0 >
+            <cfreturn queryNew("") /> 
+        </cfif>
+
+        <cfreturn userQuery />
     </cffunction>
 
     <!--- get the user data for given username --->
     <cffunction name = "checkUsername" access = "public" returnType = "query">
         <cfargument name = "username" required = "true" type = "string"/>
-        <cfset userEntity = entityLoadByPK("user", username) />
-        <cfset userQuery = entityToQuery(userEntity) />
+        <cfset userEntity = entityLoad("user", {userName = username}) />
+  <!---       <cfoutput>
+            #isdefined("userEntity")#
+        </cfoutput>--->
+        <!--- <cfdump var = "#arrayIsEmpty(userEntity)#" abort /> --->
+        <cfif arrayIsEmpty(userEntity) EQ "yes">
+            <cfreturn queryNew("") />    
+        </cfif>
+        <cfset userQuery = entityToQuery(userEntity[1]) />
         <cfreturn userQuery />
     </cffunction>
 

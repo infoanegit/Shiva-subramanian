@@ -8,7 +8,9 @@
         <link rel = "icon" href = "../assignment-logo.jpg" type = "image/x-icon" />
 		<link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
 		<script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-	</head>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script src = "./assets/js/index.js"></script>
+    </head>
 	<body>
         <form class = "container" name = "loginForm" method = "post">
             <div class = "row d-flex justify-content-center align-items-center " >
@@ -34,27 +36,11 @@
                                 </label>
                             </div>               
                             
-                            <cfif cgi.request_method IS "post">  
-                               
-                                <!--- get the users with form.username and form.password --->
-                                <cfset checkLogin = application.userObj.getData(username = form.userName, password = form.password)>
-
-                                <!--- 
-                                    If username and password combination exist, then redirect to table.cfm page 
-                                    Else an error message will be shown to the user
-                                ---> 
-                                <cfif checkLogin.recordcount>
-                                    <cfset session.username = checkLogin.username />
-                                    <cfset session.role = checkLogin.role />
-                                    <cflocation url = "table.cfm" addToken = "false"  statusCode = "301" />
-                                <cfelse>
-                                    <div class = "mt-2">
-                                        <h5 class = "text-danger" id = "inval">
-                                            INVALID LOGIN CREDENTIALS
-                                        </h5>
-                                    </div>
-                                </cfif>
-                            </cfif>        
+                            <div class = "mt-2">
+                                <h5 class = "text-danger" id = "invalidMessageId" style = "display:none;" >
+                                    INVALID LOGIN CREDENTIALS
+                                </h5>
+                            </div>
                          
                             <button name = "loginBtn" class = "btn btn-outline-light btn-lg" type = "submit">
                                 Login

@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cfset this.name = "s44" />
+    <cfset this.name = "y7" />
     <cfset this.sessionmanagement = true />
     <cfset this.dataSource = "ssubramanian_dsn" />
     <cfset this.ormEnabled = "true" />
@@ -9,8 +9,7 @@
         <cfset application.userObj = createObject("component","db") />
     </cffunction>
 
-    <cffunction name = "onRequestStart">
-        
+    <cffunction name = "onRequestStart">     
         <!--- If the user is already logged in, then redirect from the login page to the table page --->
         <cfif structKeyExists(session,'username') AND listToArray(cgi.SCRIPT_NAME, '/')[-1] EQ 'index.cfm'>
             <cflocation  url = "./table.cfm" addtoken="false" />

@@ -24,13 +24,13 @@
                                 Please enter your Details!
                             </p>
                             <div class = "form-floating  mb-3">
-                                <input type = "text" id = "userNameId" name = "userName" class = "form-control form-control-lg" placeholder = "Enter User Name"/>
+                                <input type = "text" id = "userNameId" name = "userName" class = "form-control form-control-lg" placeholder = "Enter User Name" required/>
                                 <label for = "userNameId" class="text-dark" style="background-color:none;">
                                     User Name
                                 </label>
                             </div>
                             <div class = "form-floating  mb-3">
-                                <input type = "password" id = "passwordId" name = "password" class = "form-control form-control-lg" placeholder = "Enter Password"/>
+                                <input type = "password" id = "passwordId" name = "password" class = "form-control form-control-lg" placeholder = "Enter Password" required/>
                                 <label for = "passwordId" class = "text-dark">
                                     Password
                                 </label>
@@ -45,8 +45,7 @@
                                     If username exist, then redirect to index.cfm( login ) page
                                     Else an error message will be shown to the user
                                 ---> 
-                                <cfif checkuser.recordcount>
-
+                                <cfif checkuser.recordcount EQ 0>
                                     <!--- insert username and password in DB --->
                                     <cfset application.userObj.insertUser(username = form.userName, password = form.password) />
 

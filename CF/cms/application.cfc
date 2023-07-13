@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cfset this.name = "s28225" />
+    <cfset this.name = "s28dd25" />
     <cfset this.sessionmanagement = true />
     <cfset this.dataSource = "ssubramanian_dsn" />
 
