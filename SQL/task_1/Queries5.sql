@@ -1,5 +1,5 @@
 /* 1. Display/find the given authors complete address information. [Panteley Sylvia] */
-SELECT CONCAT_WS (', ', address, city, state) AS 'complete address' WHERE au_fname = 'Panteley' AND au_lname = 'Sylvia';
+SELECT CONCAT_WS (', ', address, city, state, zip) AS 'complete address' FROM authors WHERE au_lname = 'Panteley' AND au_fname = 'Sylvia';
 
 /* 2. Display only the hire date and employee name for each employee. */
 SELECT hire_date, CONCAT_WS(' ', fname, lname) AS 'employee name' FROM employee;
