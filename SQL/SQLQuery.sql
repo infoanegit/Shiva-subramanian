@@ -20,6 +20,8 @@ CREATE TABLE publishers(
 	country VARCHAR(255)
 );
 
+SELECT publishers.pub_name FROM publishers LEFT JOIN titles ON publishers.pub_id = titles.pub_id WHERE titles.title IN ('Cooking with Computers: Surreptitious Balance Sheets', 'Silicon Valley Gastronomic Treats', 'Is Anger the Enemy?', 'Fifty Years in Buckingham Palace Kitchens');
+
 CREATE TABLE titles(
    title_id VARCHAR(255) NOT NULL PRIMARY KEY,
    title VARCHAR(255),

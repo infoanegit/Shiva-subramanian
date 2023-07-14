@@ -7,7 +7,7 @@ function showError(content){
 
 	//adding error content
 	errorElem.append(button, $('<strong></strong>').text('Warning! '), content);
-	console.log(errorElem[0]);
+
 	//showing error alert in ui
 	$('#error').addClass('show');
 	$('#error').html(errorElem[0]);
@@ -29,8 +29,8 @@ $(()=>{
 			}
 			else{
 					if(!(
-						/^[A-Za-z0-9_-]{0,255}$/.test(requiredFields[0].val()) &&
-						/^[A-Za-z0-9_-]{0,255}$/.test(requiredFields[1].val())
+						/^[A-Za-z0-9_ -]{0,255}$/.test(requiredFields[0].val()) &&
+						/^[A-Za-z0-9_ -]{0,255}$/.test(requiredFields[1].val())
 					)){
 						showError("please enter correct information");
 						result = false;
