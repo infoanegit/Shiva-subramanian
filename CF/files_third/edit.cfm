@@ -85,7 +85,7 @@
                                         image
                                     </b>
                                     <br/>
-                                    <img src = "assets/images/#imgQuery.title#.jpg" width = 100 height = 100 />
+                                    <img src = "./assets/images/#imgQuery.fileUpload#" width = 100 height = 100 />
                                 </td>    
                                 <td class  =  "d-flex justify-content-center align-content-center">   
                                     <div class = "d-flex align-content-center justify-content-center my-5 form-group">

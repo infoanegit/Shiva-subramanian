@@ -1,5 +1,5 @@
 <cfset  newq = queryNew("") />
-<cfdump var = "#newq#" />
+<cfdump var = "#expandPath("./img")#" />
 
 <cfset n = 5 />
 <cfset l = 1 />

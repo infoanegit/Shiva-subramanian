@@ -5,5 +5,4 @@
 
 /* 2. Select the title and price in the table title that the price is
    greater than 10.00. Display the results in Ascending order based on the price */
-   SELECT * from titles;
    SELECT title, price FROM titles WHERE price > 10 ORDER BY price ASC;

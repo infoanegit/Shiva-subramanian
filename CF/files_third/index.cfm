@@ -1,15 +1,8 @@
 <cfif cgi.request_method IS "post">  
-    <cfoutput>here from post</cfoutput>
-    <cfset fileDestination = #expandPath('./assets/images/#FORM.TITLE#.jpg')#>
-    <cffile action = "rename" source = "#FORM.FILEUPLOAD#" destination = "#fileDestination#" >
-    <cfquery name = "img" datasource = "ssubramanian_dsn">
-        INSERT INTO img VALUES(
-            <cfqueryparam value = '#FORM.TITLE#' cfsqltype = "cf_sql_varchar">, 
-            <cfqueryparam value = '#FORM.DESCRIPTION#' cfsqltype = "cf_sql_varchar">, 
-            <cfqueryparam value = '#FORM.TITLE#.jpg' cfsqltype = "cf_sql_longvarchar">
-            )
-    </cfquery>
-    <cflocation url = "table.cfm" addToken = "false" statusCode = "301">
+    <cfset userObj = createObject("component","db") />
+    <cffile action = "upload" fileField = "FORM.FILEUPLOAD" destination = "#expandPath('./assets/images/')#" result = "imgFile" nameconflict="overwrite" />
+    <cfset userObj.insertFormData(FORM, imgFile) />
+    <cflocation url = "table.cfm" addToken = "false" />
 </cfif> 
 
 <!DOCTYPE html>
@@ -19,26 +12,27 @@
         <meta name = "viewport" content = "width = device-width, maximum-scale = 8, initial-scale = 1">
         <link rel="icon" href="../assignment-logo.jpg" type="image/x-icon" />
         <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+        <link rel = "stylesheet" href = "./assets/css/index.css" />
         <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src = "https://code.jquery.com/jquery-3.7.0.min.js"></script>
     </head>
 
-    <body>
+    <body class = "indexbg">
         <div class = "container w-50">
-            <div class = "mb-5 fs-2 fw-bolder d-flex align-content-center justify-content-center">
+            <div class = " shadow rounded bg-light mb-5 py-2 fs-2 fw-bolder d-flex align-content-center justify-content-center">
                 File Upload and Image Functions
             </div>
-            <form method = "post" enctype = "multipart/form-data" class = "form-body p-2 px-4 rounded " style = "background-color:#ADD8E6">
+            <form method = "post" enctype = "multipart/form-data" class = "card shadow form-body p-2 px-4 rounded border border-none " style = "background-color:#ADD8E6">
                 <div class = "row">
                     <div class = "col form-group my-3">
                         <label for = "title" class = "form-label">Title*</label>
-                        <input type = "text" class = "form-control" name = "title" id = "title" data-bs-toggle = "tooltip" title = "255 characters only [letters, numbers and underscore]" />
+                        <input type = "text" class = "form-control" name = "title" id = "title" data-bs-toggle = "tooltip" title = "255 characters only [letters, numbers and underscore]" autofocus/>
                     </div>
                 </div>
                 <div class = "row">
                     <div class = "col form-group mb-3">
                         <label for = "description" class = "form-label">Description*</label>
-                        <textarea class = "form-control" name = "description" id = "description" rows = "3" data-bs-toggle = "tooltip" title = "255 characters only [letters, numbers and underscore]"></textarea>
+                        <textarea class = "form-control" name = "description" id = "description" rows = "3" data-bs-toggle = "tooltip" title = "255 characters only [letters, numbers and underscore]" ></textarea>
                     </div>
                 </div>
                 <div class = "row">
@@ -58,8 +52,8 @@
             </form>
         </div>
 
-        <div class = "container w-50 mt-3 d-flex justify-content-end">
-            <a href = "table.cfm" >show table</a>
+        <div class = "container  w-50 mt-3 d-flex justify-content-end card-btn">
+            <a href = "table.cfm" class= "btn btn-primary p-2 rounded  shadow-lg"  >show table</a>
         </div>
 
     </body>

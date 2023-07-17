@@ -49,15 +49,12 @@
                                 #tempId#
                             </td>
                             <td class = "text-wrap">
-                                #img.description#
+                                <a href = "./assets/images/#img.fileUpload#" target="_blank">#img.description#</a>
                             </td>
                             <td class = "text-wrap">
                                 <!--- <cfdump var = "#expandPath('assets/images/sfcd.jpg')#" abort /> --->
                                 <!--- reszize the image file and write to browser --->
-                                <!--- <cfimage action = "read" name = "sourceImage" source = "assets/images/sfcd.jpg"> --->
-                               <!---  <cfimage action = "resize" name = "sourceImage" width = "10" height = "10" source = "#expandPath('./assets/images/sfcd.jpg')#"> --->
-                                <img src = "assets/images/#img.title#.jpg" width = 10 height = 10 />
-                                <!--- <cfimage action = "writeToBrowser" source = "#sourceImage#"> --->
+                                <img src = "assets/images/#img.fileUpload#" width = 10 height = 10 />
                                 <i>#img.title#</i>
                             </td>
                             <td>

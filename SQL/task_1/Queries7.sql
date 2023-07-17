@@ -1,4 +1,4 @@
-/* 1. Select the average price in the table titles for  pub_id 1389. */
+/* 1. Select the average price in the table titles for pub_id 1389. */
 SELECT AVG(price) FROM titles WHERE pub_id = '1389';
 
 /* 2. What are the total numbers of rows in the titles table */

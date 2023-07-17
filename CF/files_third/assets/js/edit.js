@@ -22,6 +22,7 @@ $(()=>{
 		var result = true;
 		requiredFields.forEach((e)=>{
             console.log(e.val());
+			
 			// ? any other way
 			if(e.val() == ""){
 				showError("please enter all the required* informations");
