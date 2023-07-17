@@ -1,9 +1,9 @@
 $(() => {
-    prevElem = null;
+    var prevElem = null;
 
-    function swapColors() {
+    function swapColors(elem) {
         //swap color attribute
-        temp = $(prevElem).attr("color");
+        var temp = $(prevElem).attr("color");
         $(prevElem).attr("color", $(elem).attr("color"));
         $(elem).attr("color", temp);
 
@@ -14,10 +14,10 @@ $(() => {
 
     //setting listener
     $("div").click((e) => {
-        elem = e.target;
+        var elem = e.target;
         if (prevElem != null) {
             if ($(prevElem).attr("color") != $(elem).attr("color")) {
-                swapColors();
+                swapColors(elem);
                 e.stopPropagation();
                 prevElem = null;
             }

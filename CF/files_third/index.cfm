@@ -53,7 +53,7 @@
         </div>
 
         <div class = "container  w-50 mt-3 d-flex justify-content-end card-btn">
-            <a href = "table.cfm" class= "btn btn-primary p-2 rounded  shadow-lg"  >show table</a>
+            <a href = "table.cfm" class= "btn btn-primary p-2 rounded  shadow-lg"  >show table <img class="svg-collection-img" src = "./assets/css/album-svgrepo-com.svg" width="20" height="20" /></a>
         </div>
 
     </body>

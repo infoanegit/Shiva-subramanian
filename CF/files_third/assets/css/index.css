@@ -2,6 +2,10 @@ body{
     overflow: hidden;
 }
 
+.svg-collection-img{
+    color:white;
+}
+
 .indexbg{
     background: url("bookshelf-svgrepo-com.svg");
     background-repeat: no-repeat;
@@ -12,7 +16,7 @@ body{
 .card{
     position:relative;
     animation-name: card;
-    animation-duration: 0.6s;
+    animation-duration: 0.5s;
 }
 
 @keyframes card {
@@ -30,7 +34,7 @@ body{
 .card-btn{
     position:relative;
     animation-name: card-btn;
-    animation-duration: 0.7s;
+    animation-duration: 0.6s;
 }
 
 @keyframes card-btn {
