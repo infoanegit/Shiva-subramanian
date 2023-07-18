@@ -21,10 +21,4 @@
         </cfif>
     </cffunction>
 
-    <cffunction name = "onAbort">
-        <cfoutput>
-            abort <br />
-        </cfoutput>
-    </cffunction>
-
 </cfcomponent>

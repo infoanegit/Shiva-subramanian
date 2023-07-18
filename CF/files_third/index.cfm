@@ -19,12 +19,12 @@
 
     <body class = "indexbg">
         <div class = "container w-50">
-            <div class = " shadow rounded bg-light mb-5 py-2 fs-2 fw-bolder d-flex align-content-center justify-content-center">
+            <div class = " shadow rounded bg-light mb-3 py-2 fs-2 fw-bolder d-flex align-content-center justify-content-center">
                 File Upload and Image Functions
             </div>
             <form method = "post" enctype = "multipart/form-data" class = "card shadow form-body p-2 px-4 rounded border border-none " style = "background-color:#ADD8E6">
                 <div class = "row">
-                    <div class = "col form-group my-3">
+                    <div class = "col form-group mt-3">
                         <label for = "title" class = "form-label">Title*</label>
                         <input type = "text" class = "form-control" name = "title" id = "title" data-bs-toggle = "tooltip" title = "255 characters only [letters, numbers and underscore]" autofocus/>
                     </div>
@@ -53,7 +53,12 @@
         </div>
 
         <div class = "container  w-50 mt-3 d-flex justify-content-end card-btn">
-            <a href = "table.cfm" class= "btn btn-primary p-2 rounded  shadow-lg"  >show table <img class="svg-collection-img" src = "./assets/css/album-svgrepo-com.svg" width="20" height="20" /></a>
+            <div class="shadow">
+                <a href = "table.cfm" class= "btn btn-primary p-2 rounded  " >
+                    show table 
+                    <img class="svg-collection-img" src = "./assets/css/album-svgrepo-com.svg" width="20" height="20" />
+                </a>
+            </div>
         </div>
 
     </body>
