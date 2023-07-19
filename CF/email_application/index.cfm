@@ -14,9 +14,9 @@
 <cfif cgi.REQUEST_METHOD EQ "post">
     
     <!--- store the file in local folder --->
-    <cfset fileDestination = #expandPath('./img/#FORM.birthdayBabyName#.jpg')# />
-    <cffile action="rename" source = "#FORM.FILEUPLOAD#" destination = "#fileDestination#" />
+    <cffile action = "upload" fileField = "FORM.FILEUPLOAD" destination = "#expandPath('./assets/img/')#" result = "imgFile" nameconflict="overwrite" />
     <cfmail from = "ssubramanian@infoane.com" to = "#FORM.email#" subject = "BIRTHDAY WISH to #FORM.birthdayBabyName#" server = "smtp.example.com" >
+        <cfset fileDestination = #expandPath('./assets/img/#imgFile.serverFile#')# />
         <cfmailparam file = "#fileDestination#" />
         #FORM.birthdayWish# <br />
         <cfimage action = "writeToBrowser" source = "#fileDestination#" width = "100" height = "100 "/>

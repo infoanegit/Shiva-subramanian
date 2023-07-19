@@ -1,9 +1,12 @@
 <cfset done_with_captcha = "yes" />
 <cfset done_with_email = "yes" />
+<!--- generate random captcha --->
+<cfset session.captchaWord = application.captcha.randomize() />
+
 <cfif cgi.REQUEST_METHOD EQ "post">
 
     <!--- If the generated captcha is not the same as the submitted form captcha --->
-    <cfif compare(FORM.captcha, session.captchaWord) NEQ 0  OR isdefined("FORM.captcha") NEQ "YES">
+    <cfif compare(FORM.captcha, session.captchaWord) NEQ 0 OR isdefined("FORM.captcha") NEQ "YES">
         <cfset done_with_captcha = "no" />
     </cfif>
 
@@ -12,9 +15,6 @@
         <cfset done_with_email = "no" />
     </cfif>
 </cfif>
-
-<!--- generate random captcha --->
-<cfset session.captchaWord = application.captcha.randomize() />
 
 <!DOCTYPE html>
 <html>

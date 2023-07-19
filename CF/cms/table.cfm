@@ -5,6 +5,7 @@
 
     <!--- reloading the current page( table.cfm ) --->
     <cflocation url = "./table.cfm" addtoken="false" />
+
 </cfif>
 <cfif cgi.request_method IS "post">  
 
@@ -122,7 +123,6 @@
                                     </cfif>
                                 </td>
                                 <td>
-
                                     <!--- The delete feature is only available for admin --->
                                     <cfif session.role EQ "admin">
                                         <a href = "./table.cfm?id=#tableData.pageId#" name = "delete" class = "btn btn-danger" >
