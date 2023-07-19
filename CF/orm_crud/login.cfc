@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cffunction name = "check" access="remote" returntype="string">
+    <cffunction name = "check" access="remote" returntype="boolean">
         <!--- get the users with form.username and form.password --->
         <cfset checkLogin = application.userObj.getData(username = form.userName, password = form.password)>
 

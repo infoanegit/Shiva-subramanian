@@ -17,7 +17,7 @@ $(
                                 $("#invalidMessageId").show();
                             }
                             else{
-                                window.location.href = "table.cfm"
+                                window.location.href = "table.cfm";
                             }
                         }
                     }
