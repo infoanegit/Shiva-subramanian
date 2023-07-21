@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: #2196F3;
+  column-gap:10%;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.outer {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+}
+</style>
+</head>
+<body>
+    <div class="outer" style = "border:2px solid black">
+        <div style = "width:80%">
+            <div class = "grid-container" style = "width:100%; padding:5px; ">
+                <div class = "grid-item" style = "border:2px solid blue">
+                    <label for = "inputid">label1</label>
+                    <input type = "text" id = "inputid" />
+                </div>
+                <div class = "grid-item" style = "border:2px solid blue">
+                    <label for = "inputid">label2</label>
+                    <input type = "text" id = "inputid" />
+                </div>
+            </div>
+            <div style = "padding:5px; width:100%;">
+                <div class = "grid-item" style = "border:2px solid blue">
+                    <label for = "inputid">label3</label>
+                    <input type = "text" id = "inputid" />
+                </div>
+            </div>
+            <div class = "grid-container" style = "width:100%; padding:5px; ">
+                <div class = "grid-item" style = "border:2px solid blue">
+                    <label for = "inputid">label4</label>
+                    <input type = "text" id = "inputid" />
+                </div>
+                <div class = "grid-item" style = "border:2px solid blue">
+                    <label for = "inputid">label5</label>
+                    <input type = "text" id = "inputid" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
