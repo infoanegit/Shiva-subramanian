@@ -1,5 +1,4 @@
 <cfif structKeyExists(URL, "id")>
-
     <!--- deleting page data with id --->
     <cfset application.userObj.deleteData(URL.id) />
 
@@ -7,8 +6,7 @@
     <cflocation url = "./table.cfm" addtoken="false" />
 
 </cfif>
-<cfif cgi.request_method IS "post">  
-
+<cfif cgi.request_method IS "post">
     <!--- onClick logOutBtn, clear session --->
     <cfif structKeyExists(FORM, "logOutBtn")>
         <cfset structClear(session) />

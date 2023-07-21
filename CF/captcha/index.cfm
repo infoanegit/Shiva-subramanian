@@ -1,5 +1,6 @@
 <cfset done_with_captcha = "yes" />
 <cfset done_with_email = "yes" />
+
 <!--- generate random captcha --->
 <cfset session.captchaWord = application.captcha.randomize() />
 
@@ -14,6 +15,7 @@
     <cfif isValid("email", FORM.email) NEQ "YES" OR isdefined("FORM.email") NEQ "YES">
         <cfset done_with_email = "no" />
     </cfif>
+    
 </cfif>
 
 <!DOCTYPE html>

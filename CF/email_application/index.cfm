@@ -19,9 +19,10 @@
         <cfset fileDestination = #expandPath('./assets/img/#imgFile.serverFile#')# />
         <cfmailparam file = "#fileDestination#" />
         #FORM.birthdayWish# <br />
-        <cfimage action = "writeToBrowser" source = "#fileDestination#" width = "100" height = "100 "/>
+        <cfimage action = "writeToBrowser" source = "#fileDestination#" width = "100" height = "100" />
     </cfmail>
     <cflocation url = "index.cfm?failed=0" addToken = "false" />
+
 </cfif>
 
 <!DOCTYPE html>
@@ -41,8 +42,12 @@
                 <div class = "col-12 col-md-8 col-lg-6 col-xl-5 mt-3">
                     <div class = "card shadow bg-danger text-white" style = "border-radius: 1rem;">
                         <div class = "card-body p-5 text-center">
-                            <h2 class = "fw-bold mb-2 text-uppercase">Email</h2>
-                            <p class = "text-white-50 mb-3">Please enter the details!</p>      
+                            <h2 class = "fw-bold mb-2 text-uppercase">
+                                Email
+                            </h2>
+                            <p class = "text-white-50 mb-3">
+                                Please enter the details!
+                            </p>      
                             <div class = "form-outline form-white mb-3">
                                 <input type = "text" id = "birthDayBabyNameId" name = "birthDayBabyName" class = "form-control form-control-lg" placeholder = "Birthday Baby Name" required="required"/>
                             </div>
@@ -55,7 +60,9 @@
                             <div class = "form-outline form-white mb-3">
                                 <input type = "file" class = "form-control form-control-lg"  id = "fileUpload" name = "fileUpload" accept = ".png, .jpg, .jpeg"  required="required"/> 
                             </div>                                    
-                            <button name = "sendBtn" class = "btn btn-outline-light btn-lg" type = "submit">SEND</button>
+                            <button name = "sendBtn" class = "btn btn-outline-light btn-lg" type = "submit">
+                                SEND
+                            </button>
                         </div>
                     </div>
                 </div>

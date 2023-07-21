@@ -1,7 +1,7 @@
 CREATE TABLE userTableCMS (
 	userName varchar(255) NOT NULL PRIMARY KEY,
 	password varchar(255),
-	role varchar(10)
+	role varchar(10) FOREIGN KEY REFERENCES userRoles(roles)
 );
 
 CREATE TABLE userRoles (
